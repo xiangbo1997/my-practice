@@ -11,7 +11,8 @@
     // 1.create
     // 2.
     console.dir(Object)
-    // Object.create();
+   /* -------方法一create
+   // Object.create();
     let obj ={
         name:'wede',
         age:20,
@@ -48,7 +49,92 @@
     for (let pKey in p) {
         console.log(pKey)
     }
-    console.log(p);
+    console.log(p);*/
+ /*  // 方法二----------defineProperty
+   //  Object.defineProperty()
+    let person ={
+        lastName:'清照',
+        familyName:'李'
+    }
+    Object.defineProperties(person,{
+        fullName:{
+            get:function () {
+                // console.log(this)
+                return this.familyName +' '+ this.lastName
+            },
+            set:function (data) {
+                console.log(data);
+                let nameArry = data.split(' ')
+                this.familyName =nameArry[0];
+                this.lastName =nameArry[1];
+            }
+
+        }
+    });
+    person.fullName = '杜 甫';
+
+    console.log(person.fullName);
+    console.log(person.familyName);*/
+    /*//--------对象中的自带的的方法get和set
+    let person1 = {
+        firstName:'李',
+        lastName:'白',
+        get fullName(){
+            return this.firstName+' '+this.lastName;
+        },
+        set fullName(data){
+            let nameArry = data.split(' ');
+                this.firstName = nameArry[0];
+                this.lastName = nameArry[1];
+
+        }
+    }
+    console.log(person1.fullName);
+    person1.fullName = '陶 渊明'
+    console.log(person1.fullName);
+    console.log(person1.firstName);*/
+    // 封装一个函数
+    /**
+     *
+     * @param name  要转换成对象的名字
+     * @returns {需要转换成的对象}
+     */
+    function autoTransformObject(name) {
+            // console.log(typeof name)
+        let first ='';
+        let last =''
+        if(typeof name ==='string' ){
+            console.log(22)
+
+            let nameArr = name.split(' ');
+              first = nameArr[0];
+          last = nameArr[1];
+
+        }else {
+            let err = '输入不符合规范，请重新输入'
+            return err;
+        }
+        let person1 = {
+            firstName:first,
+            lastName:last,
+            get fullName(){
+                return this.firstName+' '+this.lastName;
+            },
+            set fullName(data){
+                let nameArry = data.split(' ');
+                this.firstName = nameArry[0];
+                this.lastName = nameArry[1];
+
+            }
+        }
+        return person1;
+    }
+  // let p1 =  autoTransformObject('李 白');
+  let p1 =  autoTransformObject(1);
+    console.log(p1)
+    p1.firstName = '李';
+    console.log(p1)
+
 </script>
 </body>
 </html>
