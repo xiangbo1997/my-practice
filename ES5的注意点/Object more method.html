@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script type="text/javascript">
+    // Object的拓展方法
+    // 1.create
+    // 2.
+    console.dir(Object)
+    // Object.create();
+    let obj ={
+        name:'wede',
+        age:20,
+        sex:'男',
+        speak:function (name) {
+            console.log(name);
+            // console.log(this)
+        }
+    }
+    function Person(name,age,sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    Person.prototype.setName= function (name) {
+        this.name = name;
+    }
+    let p = new Person('Bob',20,'男');
+    p.setName('Lucy')
+    console.log(p);
+      p= Object.create(obj,{
+          name:{
+              value:'kebe',
+              writable:true,//是否可以修改true是可以修改
+              enumerable:true,//是否可以枚举true可以枚举
+              configurable:true//是否可以删除true可以删除
+          }
+      })//以指定的对象为当前新对象__proto__指向的对象
+    // 注意：forin 可以枚举出原型对象上编码人员添加的属性或方法
+    p.age=30;
+    console.log(p);
+    console.log(p.speak('Lucy'));
+    delete p.name//删除对象中的属性
+    for (let pKey in p) {
+        console.log(pKey)
+    }
+    console.log(p);
+</script>
+</body>
+</html>

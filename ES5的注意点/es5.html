@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script type="text/javascript">
+    // 严格模式
+    /* 1.必须用var声明；
+     2.自定义函数中的this不能指向window
+     3.对象不能有重名属性
+     4.创建eval作用域*/
+    'use strict'
+// 1.必须用var声明
+    function demon() {
+        // a = 5//没有全局提升，必须用var声明
+        var a = 5;
+        console.log(a)
+    }
+
+    demon()
+    // console.log(a)
+// 2.自定中函数中的this指向不能使window（定时器中函数除外）
+    function test() {
+        console.log(this)
+    }
+    test();
+    function Person(name) {
+        this.name =name
+    }
+    // Person('kebe');//构造函数直接调用时this指向window
+    console.log(Person);
+    // 3.对象不能有重名属性
+      var obj ={
+          age:18,//错误写法
+          age:20
+      }
+      // console.log(obj)
+    // 4创建eval作用域(隔离作用域)
+    var b = 100;
+      eval('var b =10; console.log(b)');
+      console.log(b);
+</script>
+</body>
+</html>
