@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script type="text/javascript">
+    /* 2. 特点:
+         * 在块级作用域内有效（定义全局能够直接使用的变量时候也可以用let）
+     * 不能重复声明
+     * 如果用var定义的有提升，提升后随后赋值为undefined
+     如果用let定义的有提升！！！，提升后没初始化（js中如果一个变量的值没有经过初始化，是不能用的）
+     这里的没有值（这里的没有，不是null，不是undefined）值。
+     【let声明的变量，在声明语句之前不可用】*/
+    /*
+     // 区别一：用let声明的变量有提升但没有初始化
+     //         用var声明的变量既有初始化又有初始化（初始化赋值为undefined）
+     console.log(a);
+     let a = 100;
+     console.log(b);
+     var b =100*/
+    // 区别二：用let声明的变量存在块级作用域{}
+    //              用var声明的只有函数作用域和全局作用域
+   /* if (true) {
+        // let c = 100;
+        var c = 100
+    }
+    console.log(c);*/
+    //区别三：用let声明的全局变量存在一个和window同级的（script）区域内(但是window可以用)
+    let a = 100;
+    console.log(a)
+</script>
+</body>
+</html>
