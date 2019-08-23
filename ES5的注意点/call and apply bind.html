@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script type="text/javascript">
+    /* * 都能指定函数中的this
+     * call()/apply()是立即调用函数
+     * bind()是将函数返回
+     * call()和apply()传参有区别*/
+    let obj1 = {
+        m: 1,
+        n: 2
+    };
+    let obj2 = {
+        c: 2,
+        d: 4
+    };
+
+    function demon(a, b, c) {
+        console.log(this)
+        let d = a + b + c;
+        return d;
+    }
+
+    let result = demon(1, 2, 3);
+    let callResult = demon.call(obj1,1,2,3);
+    let applayResult = demon.apply(obj2,[1,2,3]);
+    let bindResult = demon.bind(obj1,1,2,3);
+    console.log(result);
+    console.log(callResult);
+    console.log(applayResult);
+    console.log(bindResult());
+</script>
+</body>
+</html>
